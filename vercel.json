@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "public": true,
+  "outputDirectory": "public",
+  "rewrites": [
+    { "source": "/api/chat", "destination": "/api/chat" },
+    { "source": "/api/voice", "destination": "/api/voice" },
+    { "source": "/api/schedule", "destination": "/api/schedule" }
+  ],
+  "functions": {
+    "api/chat.js": {
+      "maxDuration": 30
+    },
+    "api/voice.js": {
+      "maxDuration": 15
+    },
+    "api/schedule.js": {
+      "maxDuration": 15
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "POST, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+      ]
+    }
+  ]
+}
